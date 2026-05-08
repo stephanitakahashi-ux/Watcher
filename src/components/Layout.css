@@ -1,0 +1,243 @@
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+/* Sticky title bar + step tabs, above page content */
+.app-chrome {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.app-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  padding: 1rem 1.5rem;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--border);
+}
+
+.app-steps-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.65rem 1.5rem 0.85rem;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.brand-mark {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--accent) 0%, #5c0d9a 100%);
+  box-shadow: var(--accent-glow);
+  flex-shrink: 0;
+}
+
+.brand-title {
+  font-weight: 700;
+  color: var(--text-h);
+  display: block;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+}
+
+.brand-sub {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.app-nav {
+  padding: 0.2rem;
+  background: color-mix(in srgb, var(--text-h) 4%, transparent);
+  border-radius: var(--radius-pill);
+  width: fit-content;
+  max-width: 100%;
+}
+
+.nav-link {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: none;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.nav-link:hover {
+  background: var(--hover);
+  color: var(--text-h);
+}
+
+.nav-link-active {
+  color: var(--surface);
+  background: var(--accent);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (prefers-color-scheme: dark) {
+  .nav-link-active {
+    color: #0c0612;
+    background: var(--accent);
+  }
+}
+
+.app-main {
+  flex: 1;
+  padding: 2rem 1.5rem 3rem;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Figma token (header, top right) */
+.figma-token-root {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.figma-token-trigger {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transform: none;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+.figma-token-trigger:hover:not(:disabled) {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
+  background: var(--hover);
+  transform: none;
+}
+
+.figma-token-trigger:active:not(:disabled) {
+  transform: none;
+}
+
+.figma-token-trigger--set {
+  color: var(--accent);
+  border-color: var(--accent-border);
+}
+
+.figma-token-trigger-dot {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--border);
+  border: 2px solid var(--surface);
+  box-sizing: border-box;
+}
+
+.figma-token-trigger--set .figma-token-trigger-dot {
+  background: var(--accent);
+}
+
+.figma-token-icon {
+  display: block;
+}
+
+.figma-token-popover {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: min(340px, calc(100vw - 2rem));
+  padding: 1.15rem 1.25rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
+  z-index: 60;
+}
+
+.figma-token-popover-title {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-h);
+  letter-spacing: -0.02em;
+}
+
+.figma-token-popover-hint {
+  margin: 0 0 1rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.figma-token-input {
+  margin-bottom: 0.75rem;
+}
+
+.figma-token-popover-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.figma-token-popover-actions .btn-ghost {
+  margin-right: auto;
+}
+
+@media (max-width: 640px) {
+  .app-header {
+    padding: 0.85rem 1rem;
+  }
+
+  .app-steps-nav {
+    padding: 0.55rem 1rem 0.75rem;
+  }
+
+  .app-main {
+    padding: 1.25rem 1rem 2rem;
+  }
+}
